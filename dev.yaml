@@ -5,7 +5,6 @@ trigger:
 
           jobs:
             - job: CloneAndPush
-                displayName: Clone from GitHub and Push to Azure DevOps
                     pool: Self Pool
                         steps:
                             - checkout: self
