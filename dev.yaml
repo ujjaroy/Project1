@@ -16,9 +16,3 @@ jobs:
       git clone https://github.com/UjjalKrRoy/AZ_Repo.git
     displayName: 'Clone from GitHub'
 
-  - script: |
-      cd D:\AzureDevops\AZ_Git\ClonedRepo
-      git init
-      git remote add https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
-      git push --all
-    displayName: 'Push to Azure DevOps'
