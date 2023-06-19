@@ -1,0 +1,20 @@
+name: Send code from GitHub to Azure repo
+
+on:
+    push:
+          branches:
+                  - dev
+
+          jobs:
+              send-code:
+                    runs-on: ubuntu-latest
+                          steps:
+                                  - uses: actions/checkout@v2
+                                          - name: Install Azure CLI
+                                                    run: sudo apt-get install -y azure-cli
+                                                            - name: Login to Azure
+                                                                      run: az login
+                                                                              - name: Get Azure repo URL
+                                                                                        run: az repos list --query url -o tsv
+                                                                                                - name: Send code to Azure repo
+                                                                                                          run: az repos sync --url https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo --source-branch main
