@@ -4,7 +4,7 @@ trigger:
     include:
       - dev
 jobs:
-  copy-repo:
+- copy-repo:
     pool:
     name: Self Pool
   steps:
