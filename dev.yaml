@@ -4,7 +4,6 @@ trigger:
     include:
       - dev
 jobs:
-  displayName: Clone from GitHub and Push to Azure DevOps
   pool:
     name: Self Pool
   steps:
