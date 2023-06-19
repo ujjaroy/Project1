@@ -17,6 +17,6 @@ jobs:
 
   - script: |
       cd D:\AzureDevops\AZ_Git\Cloned Repo
-      git remote add azure https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
-      git push azure --all
+      git remote add https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
+      git push --all
     displayName: 'Push to Azure DevOps'
