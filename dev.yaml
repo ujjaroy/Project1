@@ -23,8 +23,6 @@ jobs:
           artifact: 'source'
 
       - script: |
-          git config --global user.email "youremail@example.com"
-          git config --global user.name "Your Name"
           git clone https://github.com/UjjalKrRoy/AZ_Repo.git D:\AzureDevops\AZ_Git\ClonedRepo
           cd "D:\AzureDevops\AZ_Git\ClonedRepo"
           git remote add azure https://$(username):$(password)@ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
