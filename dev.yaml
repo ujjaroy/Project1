@@ -18,7 +18,7 @@ jobs:
       git remote add origin https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
       git remote -v
       git push --all
-      rm -rf D:\AzureDevops\AZ_Git\ClonedRepo\*
+      del D:\AzureDevops\AZ_Git\ClonedRepo\*
 
 #    displayName: 'Clone from GitHub'
 
