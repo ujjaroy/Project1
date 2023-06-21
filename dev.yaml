@@ -29,7 +29,7 @@ steps:
   displayName: 'Intialize & Remove'
     
 - script: |
-    git remote add origin https://pgw7mlu34xwnc55gntp3ihllmlefg7ubkfxi5btald5csl7cjafq@ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/My_Repo
+    git remote add origin https://dev.azure.com/ujjalkrroy0295/MyProject/_git/My_Repo
     git remote -v
     git push -u origin --all
   displayName: 'Push to Azure DevOps'
