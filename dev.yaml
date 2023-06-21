@@ -3,6 +3,10 @@ trigger:
     include:
       - main
 
+variables:
+  azure: 'https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo'
+  git: 'https://github.com/UjjalKrRoy/AZ_Repo.git'
+
 pr:
   branches:
     include:
@@ -17,5 +21,5 @@ steps:
 - script: |
     git remote rm origin
     git remote -v
-    git remote set-url --push azure https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
+    git remote set-url --push $(azure) $(git)
   displayName: 'Transfer code to Azure DevOps'
