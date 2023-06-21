@@ -20,10 +20,9 @@ jobs:
       cd "D:\AzureDevops\AZ_Git\ClonedRepo"
       git init D:\AzureDevops\AZ_Git\ClonedRepo
       git remote rm origin
-      git remote add origin https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
+      git remote add origin https://$(azurepat)@ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
       git remote -v
-      git fetch https://$(azurepat)@ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
-      git push --all
+      git push origin --all
     displayName: 'Push to Azure DevOps'
 
 #  - script: |
