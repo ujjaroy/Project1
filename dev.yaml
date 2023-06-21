@@ -20,7 +20,7 @@ steps:
 
 - script: |
     git clone https://github.com/UjjalKrRoy/AZ_Repo.git
-    cd <github-repo>
+    cd AZ_Repo
     git remote add azure https://dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
     git push azure --all --force
   displayName: 'Pull code from GitHub to Azure DevOps'
