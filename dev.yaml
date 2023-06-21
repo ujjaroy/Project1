@@ -8,8 +8,6 @@ pr:
     include:
       - '*'
 
-pr: none
-
 pool:
   name: 'Self Pool'
 
