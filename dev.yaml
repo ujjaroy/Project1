@@ -8,11 +8,6 @@ jobs:
     displayName: 'Clone and Push to Azure DevOps'
     pool:
       name: 'Self Pool'
-    steps:
-      - task: UseGitVersion@7
-        displayName: 'Set Git Version'
-        inputs:
-          versionSpec: '5.x'
 
       - checkout: self
 
