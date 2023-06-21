@@ -22,6 +22,6 @@ steps:
     git config --global credential.helper manager-core
     git clone https://github.com/UjjalKrRoy/AZ_Repo.git D:\AzureDevops\AZ_Git\ClonedRepo
     cd "D:\AzureDevops\AZ_Git\ClonedRepo"
-    git remote add azure https://zibqxwhlok4vry2pyrquhg6ixo6abt76y2aywlgk5lgp2sozkk6q@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
+    git remote add azure https://ujjalkrroy:igvpyeooggvprbp6aghwcnzuxuhxedbm3zlqea5beu4mgks2swca@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
     git push azure --all
   displayName: 'Pull code from GitHub to Azure DevOps'
