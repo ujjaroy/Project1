@@ -23,7 +23,8 @@ steps:
     git clone https://github.com/UjjalKrRoy/AZ_Repo.git D:\AzureDevops\AZ_Git\ClonedRepo
     cd "D:\AzureDevops\AZ_Git\ClonedRepo"
     git init
-    git remote add azure https://zibqxwhlok4vry2pyrquhg6ixo6abt76y2aywlgk5lgp2sozkk6q@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
+    git remote rm origin
+    git remote add azure https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
     git remote -v
     git push azure --all
   displayName: 'Pull code from GitHub to Azure DevOps'
