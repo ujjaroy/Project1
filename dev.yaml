@@ -27,6 +27,9 @@ steps:
     cd "D:\AzureDevops\AZ_Git\ClonedRepo"
     git init
     git remote rm origin
+  displayName: 'Intialize & Remove'
+    
+- script: |
     git remote add azure https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
     git remote -v
     git push azure --all
