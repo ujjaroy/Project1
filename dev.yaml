@@ -17,6 +17,6 @@ steps:
 - script: |
     git remote rm origin
     git remote -v
-    git remote set-url main https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
-    git push -u main --all
+    git remote set-url https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
+    git push --all
   displayName: 'Transfer code to Azure DevOps'
