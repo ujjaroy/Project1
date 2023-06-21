@@ -8,12 +8,6 @@ pr:
     include:
       - '*'
 
-#variables:
-#  GIT_TERMINAL_PROMPT: '1'
-#  azurepat: 'gfwph632epwwv3bdzevt27x5q6gelg7kcseph7eeymcrgvcfrcha'
-#  username: 'ujjalkrroy'
-#  password: 'igvpyeooggvprbp6aghwcnzuxuhxedbm3zlqea5beu4mgks2swca'
-
 pool:
   name: 'Self Pool'
 
