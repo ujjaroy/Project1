@@ -19,6 +19,7 @@ steps:
 - checkout: self
 
 - script: |
+    git config --global credential.helper store
     git clone https://github.com/UjjalKrRoy/AZ_Repo.git
     cd AZ_Repo
     git remote add azure https://dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
