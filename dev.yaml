@@ -17,10 +17,14 @@ pool:
 
 steps:
 - checkout: self
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+    addToPath: true
 
 - script: |
-    git clone https://u3sorgkofcacmizyc3kuzxqgqd6xu73akacyaudxvp5g5nglxdza@github.com/UjjalKrRoy/AZ_Repo.git
+    git clone git@github.com:UjjalKrRoy/AZ_Repo.git
     cd AZ_Repo
-    git remote add azure https://u3sorgkofcacmizyc3kuzxqgqd6xu73akacyaudxvp5g5nglxdza@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
+    git remote add azure git@ssh.dev.azure.com:v3/ujjalkrroy0295/MyProject/AZ_Repo
     git push azure --all
   displayName: 'Pull code from GitHub to Azure DevOps'
