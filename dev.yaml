@@ -3,7 +3,8 @@ trigger:
     include:
       - dev
 
-#variables:
+variables:
+  GIT_TERMINAL_PROMPT: '1'
 #  username: 'ujjalkrroy'
 #  password: 'igvpyeooggvprbp6aghwcnzuxuhxedbm3zlqea5beu4mgks2swca'
 
