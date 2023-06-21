@@ -18,9 +18,9 @@ pool:
 steps:
 - checkout: self
 
-- script: |
-    git remote rm origin
-    git remote add azure $(azure)
-    git remote -v
-    git remote set-url --push azure $(azure) $(git)
-  displayName: 'Transfer code to Azure DevOps'
+  - script: |
+      git clone https://github.com/UjjalKrRoy/AZ_Repo.git
+      cd <github-repo>
+      git remote add azure https://dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
+      git push azure --all --force
+    displayName: 'Pull code from GitHub to Azure DevOps'
