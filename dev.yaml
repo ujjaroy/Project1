@@ -19,7 +19,7 @@ jobs:
       cd "D:\AzureDevops\AZ_Git\ClonedRepo"
       git init D:\AzureDevops\AZ_Git\ClonedRepo
       git remote rm origin
-      git remote add origin https://gfwph632epwwv3bdzevt27x5q6gelg7kcseph7eeymcrgvcfrcha@ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
+      git remote add origin https://ujjalkrroy:igvpyeooggvprbp6aghwcnzuxuhxedbm3zlqea5beu4mgks2swca@ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
       git remote -v
       git push origin --all
     displayName: 'Push to Azure DevOps'
