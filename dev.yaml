@@ -8,7 +8,7 @@ jobs:
     displayName: 'Clone and Push to Azure DevOps'
     pool:
       name: 'Self Pool'
-
+    steps:
       - checkout: self
 
       - task: PublishPipelineArtifact@1
