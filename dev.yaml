@@ -8,6 +8,8 @@ pr:
     include:
       - '*'
 
+pr: none
+
 pool:
   name: 'Self Pool'
 
@@ -15,6 +17,8 @@ steps:
 - checkout: self
 
 - script: |
+    git remote rm origin
+    git remote -v
     git remote set-url origin https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
     git push -u origin --all
   displayName: 'Transfer code to Azure DevOps'
