@@ -29,7 +29,7 @@ steps:
   displayName: 'Intialize & Remove'
     
 - script: |
-    git remote add origin https://ujjalkrroy0295:rovut7latcbakl3d3foevfmjlrjx2oyg6w2wmkogvudpbwaxhx4q@dev.azure.com/ujjalkrroy0295/MyProject/_git/My_Repo
+    git remote add origin https://ujjalkrroy0295:n6qtz62e2aafkww7xa3n77vy7rez4d6bk33lg3jcsgcizzomk56q@dev.azure.com/ujjalkrroy0295/MyProject/_git/My_Repo
     git remote -v
     git -c http.extraheader="AUTHORIZATION: bearer $(System.AccessToken)" push -u origin --all
   displayName: 'Push to Azure DevOps'
