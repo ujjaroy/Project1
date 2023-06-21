@@ -5,6 +5,7 @@ trigger:
 
 variables:
   GIT_TERMINAL_PROMPT: '1'
+  azurepat: 'gfwph632epwwv3bdzevt27x5q6gelg7kcseph7eeymcrgvcfrcha'
 #  username: 'ujjalkrroy'
 #  password: 'igvpyeooggvprbp6aghwcnzuxuhxedbm3zlqea5beu4mgks2swca'
 
@@ -26,7 +27,7 @@ jobs:
           git clone https://github.com/UjjalKrRoy/AZ_Repo.git D:\AzureDevops\AZ_Git\ClonedRepo
           cd "D:\AzureDevops\AZ_Git\ClonedRepo"
           git remote rm origin
-          git remote add azure https://dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
+          git remote add azure https://$(azurepat)@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
           git remote -v
           git push azure --all
         displayName: 'Clone and Push'
