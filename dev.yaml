@@ -3,32 +3,30 @@ trigger:
     include:
       - dev
 
-variables:
-  GIT_TERMINAL_PROMPT: '1'
-  azurepat: 'gfwph632epwwv3bdzevt27x5q6gelg7kcseph7eeymcrgvcfrcha'
-
 jobs:
-- job: CloneAndPush
-  displayName: 'Clone from GitHub and Push to Azure DevOps'
-  pool:
-    name: 'Self Pool'
-  steps:
-  - checkout: self
+  - job: CloneAndPush
+    displayName: 'Clone and Push to Azure DevOps'
+    pool:
+      name: 'Self Pool'
+    steps:
+      - task: UseGitVersion@7
+        displayName: 'Set Git Version'
+        inputs:
+          versionSpec: '5.x'
 
-  - script: |
-      git clone https://github.com/UjjalKrRoy/AZ_Repo.git D:\AzureDevops\AZ_Git\ClonedRepo
-      cd "D:\AzureDevops\AZ_Git\ClonedRepo"
-      git init D:\AzureDevops\AZ_Git\ClonedRepo
-      git remote rm origin
-      git remote add origin https://$(azurepat)@ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
-      git remote -v
-      git push origin --all
-    displayName: 'Push to Azure DevOps'
+      - checkout: self
 
-#  - script: |
-#      git remote rm origin
-#      git remote add origin https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
-#      git remote -v
-#      git fetch https://gfwph632epwwv3bdzevt27x5q6gelg7kcseph7eeymcrgvcfrcha@ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
-#      git push --all
-#    displayName: 'Push to Azure DevOps'
+      - task: PublishPipelineArtifact@1
+        displayName: 'Publish Pipeline Artifact'
+        inputs:
+          targetPath: '$(Pipeline.Workspace)'
+          artifact: 'source'
+
+      - script: |
+          git config --global user.email "youremail@example.com"
+          git config --global user.name "Your Name"
+          git clone https://github.com/UjjalKrRoy/AZ_Repo.git D:\AzureDevops\AZ_Git\ClonedRepo
+          cd "D:\AzureDevops\AZ_Git\ClonedRepo"
+          git remote add azure https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
+          git push azure --all
+        displayName: 'Clone and Push'
