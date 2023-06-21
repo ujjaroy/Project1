@@ -19,8 +19,9 @@ steps:
 - checkout: self
 
 - script: |
-    git clone git@github.com:UjjalKrRoy/AZ_Repo.git
+    git config --global credential.helper manager-core
+    git clone https://github.com/UjjalKrRoy/AZ_Repo.git
     cd AZ_Repo
-    git remote add azure git@ssh.dev.azure.com:v3/ujjalkrroy0295/MyProject/AZ_Repo
+    git remote add azure https://i6yobhzeb4azvb7zvioetnt6j6al3zrhfnjhm4yexy7vcqyvh3mq@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
     git push azure --all
   displayName: 'Pull code from GitHub to Azure DevOps'
