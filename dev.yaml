@@ -3,6 +3,9 @@ trigger:
     include:
       - dev
 
+variables:
+  GIT_TERMINAL_PROMPT: '1'
+
 jobs:
 - job: CloneAndPush
   displayName: 'Clone from GitHub and Push to Azure DevOps'
@@ -10,9 +13,6 @@ jobs:
     name: 'Self Pool'
   steps:
   - checkout: self
-
-    variables:
-      GIT_TERMINAL_PROMPT: '1'
 
   - script: |
       git clone https://github.com/UjjalKrRoy/AZ_Repo.git D:\AzureDevops\AZ_Git\ClonedRepo
