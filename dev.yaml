@@ -19,8 +19,8 @@ steps:
 - checkout: self
 
 - script: |
-    git config --global credential.helper manager-core
     git remote rm azure
+    git config --global credential.helper manager-core
     git clone https://github.com/UjjalKrRoy/AZ_Repo.git D:\AzureDevops\AZ_Git\ClonedRepo
     cd "D:\AzureDevops\AZ_Git\ClonedRepo"
     git remote add azure https://i6yobhzeb4azvb7zvioetnt6j6al3zrhfnjhm4yexy7vcqyvh3mq@ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
