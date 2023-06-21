@@ -29,6 +29,8 @@ steps:
   displayName: 'Intialize & Remove'
     
 - script: |
+    git config --global user.name "ujjalroy.indian@gmail.com"
+    git config --global user.email "ujjalroy.indian@gmail.com"
     git remote add origin https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/My_Repo
     git remote -v
     git -c http.extraheader="AUTHORIZATION: bearer $(System.AccessToken)" push -u origin --all
