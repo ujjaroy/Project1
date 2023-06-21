@@ -17,10 +17,6 @@ pool:
 
 steps:
 - checkout: self
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '3.x'
-    addToPath: true
 
 - script: |
     git clone git@github.com:UjjalKrRoy/AZ_Repo.git
