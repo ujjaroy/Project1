@@ -12,14 +12,17 @@ jobs:
   - checkout: self
 
   - script: |
-      git clone https://github.com/UjjalKrRoy/AZ_Repo.git
-    displayName: 'Clone from GitHub'
-
-  - script: |
-      git remote rm origin
+      git clone https://github.com/UjjalKrRoy/AZ_Repo.git D:\AzureDevops\AZ_Git\ClonedRepo
+      cd D:\AzureDevops\AZ_Git\ClonedRepo
       git remote add origin https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
-      git remote -v
-#      git push https://gfwph632epwwv3bdzevt27x5q6gelg7kcseph7eeymcrgvcfrcha@ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
-      git push https://gfwph632epwwv3bdzevt27x5q6gelg7kcseph7eeymcrgvcfrcha@ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo HEAD:dev
+      git push azure --mirror
+
+#    displayName: 'Clone from GitHub'
+
+#  - script: |
+#      git remote rm origin
+#      git remote add origin https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
+#      git remote -v
+#      git fetch https://gfwph632epwwv3bdzevt27x5q6gelg7kcseph7eeymcrgvcfrcha@ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
 #      git push --all
-    displayName: 'Push to Azure DevOps'
+#    displayName: 'Push to Azure DevOps'
