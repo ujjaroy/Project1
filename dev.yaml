@@ -1,7 +1,12 @@
 trigger:
   branches:
     include:
-      - dev
+      - main
+
+pr:
+  branches:
+    include:
+      - '*'
 
 #variables:
 #  GIT_TERMINAL_PROMPT: '1'
@@ -9,19 +14,13 @@ trigger:
 #  username: 'ujjalkrroy'
 #  password: 'igvpyeooggvprbp6aghwcnzuxuhxedbm3zlqea5beu4mgks2swca'
 
-jobs:
-  - job: CloneAndPush
-    displayName: 'Clone and Push to Azure DevOps'
-    pool:
-      name: 'Self Pool'
-    steps:
-      - checkout: self
+pool:
+  name: 'Self Pool'
 
-      - script: |
-          git clone https://github.com/UjjalKrRoy/AZ_Repo.git D:\AzureDevops\AZ_Git\ClonedRepo
-          cd "D:\AzureDevops\AZ_Git\ClonedRepo"
-          git remote rm origin
-          git remote set-url --add azure https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
-          git remote -v
-          git push --all
-        displayName: 'Clone and Push'
+steps:
+- checkout: self
+
+- script: |
+    git remote set-url origin https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
+    git push -u origin --all
+  displayName: 'Transfer code to Azure DevOps'
