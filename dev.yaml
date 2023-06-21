@@ -20,6 +20,7 @@ steps:
 
 - script: |
     git remote rm origin
+    git remote add azure $(azure)
     git remote -v
-    git remote set-url --push $(azure) $(git)
+    git remote set-url --push azure $(azure) $(git)
   displayName: 'Transfer code to Azure DevOps'
