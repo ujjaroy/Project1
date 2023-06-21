@@ -15,6 +15,7 @@ jobs:
       git clone https://github.com/UjjalKrRoy/AZ_Repo.git D:\AzureDevops\AZ_Git\ClonedRepo
       cd "D:\AzureDevops\AZ_Git\ClonedRepo"
       git init D:\AzureDevops\AZ_Git\ClonedRepo
+      git -c http.extraheader="AUTHORIZATION: bearer $(System.AccessToken)" remote add azure https://dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
       git remote -v
     displayName: 'Push to Azure DevOps'
 
