@@ -18,7 +18,7 @@ jobs:
       git remote rm origin
       git -c http.extraheader="AUTHORIZATION: bearer $(System.AccessToken)" remote add origin https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
       git remote -v
-      git -c http.extraheader="AUTHORIZATION: bearer $(System.AccessToken)" push origin --all https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
+      git -c http.extraheader="AUTHORIZATION: bearer $(System.AccessToken)" push origin HEAD:refs/heads/dev
     displayName: 'Push to Azure DevOps'
 
 #  - script: |
