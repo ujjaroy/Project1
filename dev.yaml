@@ -27,7 +27,7 @@ jobs:
           git clone https://github.com/UjjalKrRoy/AZ_Repo.git D:\AzureDevops\AZ_Git\ClonedRepo
           cd "D:\AzureDevops\AZ_Git\ClonedRepo"
           git remote rm origin
-          git remote add azure https://$(azurepat)@ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
+          git remote add https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
           git remote -v
-          git push azure --all
+          git push --all
         displayName: 'Clone and Push'
