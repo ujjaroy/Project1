@@ -14,6 +14,7 @@ jobs:
   - script: |
       git clone https://github.com/UjjalKrRoy/AZ_Repo.git D:\AzureDevops\AZ_Git\ClonedRepo
       cd "D:\AzureDevops\AZ_Git\ClonedRepo"
+      git init
     displayName: 'Push to Azure DevOps'
 
 #  - script: |
