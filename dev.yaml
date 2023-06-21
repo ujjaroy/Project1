@@ -19,7 +19,7 @@ steps:
 - checkout: self
 
 - script: |
-    git config --global credential.helper '!f() { echo "username=ujjalkrroy"; echo "password=igvpyeooggvprbp6aghwcnzuxuhxedbm3zlqea5beu4mgks2swca"; }; f "u3sorgkofcacmizyc3kuzxqgqd6xu73akacyaudxvp5g5nglxdza"'
+    git config --global credential.helper manager-core
     git clone https://github.com/UjjalKrRoy/AZ_Repo.git
     cd AZ_Repo
     git remote add azure https://dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
