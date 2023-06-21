@@ -3,6 +3,9 @@ trigger:
     include:
       - dev
 
+variables:
+  GIT_TERMINAL_PROMPT: '1'
+
 jobs:
   - job: CloneAndPush
     displayName: 'Clone and Push to Azure DevOps'
