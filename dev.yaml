@@ -19,6 +19,6 @@ jobs:
       git remote rm origin
       git remote add origin https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
       git remote -v
-      git push https://gfwph632epwwv3bdzevt27x5q6gelg7kcseph7eeymcrgvcfrcha@ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
-      git push --all
+      git push --all https://gfwph632epwwv3bdzevt27x5q6gelg7kcseph7eeymcrgvcfrcha@ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo
+#      git push --all
     displayName: 'Push to Azure DevOps'
