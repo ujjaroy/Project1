@@ -19,6 +19,8 @@ steps:
 - checkout: self
 
 - script: |
+    rd /S /Q "D:\AzureDevops\AZ_Git\ClonedRepo"
+    del /S /Q "D:\AzureDevops\AZ_Git\ClonedRepo\*"
     git config --global credential.helper manager-core
     git clone https://github.com/UjjalKrRoy/AZ_Repo.git D:\AzureDevops\AZ_Git\ClonedRepo
   displayName: 'Pull code from GitHub'
