@@ -3,9 +3,9 @@ trigger:
     include:
       - main
 
-variables:
-  azure: 'https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo'
-  git: 'https://github.com/UjjalKrRoy/AZ_Repo.git'
+#variables:
+#  azure: 'https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo'
+#  git: 'https://github.com/UjjalKrRoy/AZ_Repo.git'
 
 pr:
   branches:
@@ -37,4 +37,4 @@ steps:
       cd D:\AzureDevops\AZ_Git\ClonedRepo
       git remote add origin https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/My_Repo
       git remote -v
-      git push -u origin --all
+      git -c http.extraheader="AUTHORIZATION: bearer $(System.AccessToken)" push -u origin --all
