@@ -29,18 +29,12 @@ steps:
     cd "D:\AzureDevops\AZ_Git\ClonedRepo"
     git remote rm origin
   displayName: 'CD & Remove Previous Origin'
-    
-- script: |
-    git remote add origin https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/My_Repo
-    git config user.email "ujjalkrroy@hotmail.com"
-    git remote -v
-    git -c http.extraheader="AUTHORIZATION: bearer $(System.AccessToken)" push -u origin --all
-  displayName: 'Push to Azure DevOps'
+
 
 - task: CmdLine@2
   inputs:
-    script: 'cd D:\AzureDevops\AZ_Git\ClonedRepo'
-
-- task: CmdLine@2
-  inputs:
-    script: 'git push -u origin --all'
+    script: |
+      cd D:\AzureDevops\AZ_Git\ClonedRepo
+      git remote add origin https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/My_Repo
+      git remote -v
+      git push -u origin --all
