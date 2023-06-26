@@ -31,7 +31,7 @@ steps:
       cd D:\AzureDevops\AZ_Git\ClonedRepo
       git config --global credential.modalprompt true
 #      git remote add azure https://zi3oeak3vwwuuiorugpxklq3dan7t2tvzcs5yor62oo3e3hojnqq@dev.azure.com/ujjalkrroy0295/MyProject/_git/My_Repo
-      git remote set-url azure https://zi3oeak3vwwuuiorugpxklq3dan7t2tvzcs5yor62oo3e3hojnqq@dev.azure.com/ujjalkrroy0295/MyProject/_git/My_Repo
+#     git remote set-url azure https://zi3oeak3vwwuuiorugpxklq3dan7t2tvzcs5yor62oo3e3hojnqq@dev.azure.com/ujjalkrroy0295/MyProject/_git/My_Repo
 
 - task: CmdLine@2
   inputs:
