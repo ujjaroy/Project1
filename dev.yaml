@@ -30,7 +30,7 @@ steps:
     
 - script: |
     git remote add origin https://ujjalkrroy:hvoupd5l42hum2ynllmhvkbc4bwps63tuwgaewb56a5b2zedjvqa@dev.azure.com/ujjalkrroy0295/MyProject/_git/My_Repo
-    git config user.email "ujjalroy.indian@gmail.com"
+#    git config user.email "ujjalroy.indian@gmail.com"
     git remote -v
     git -c http.extraheader="AUTHORIZATION: bearer $(System.AccessToken)" push -u origin --all
   displayName: 'Push to Azure DevOps'
