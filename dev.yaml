@@ -37,4 +37,4 @@ steps:
   inputs:
     script: |
       git remote -v
-      git push --all
+      git push -u origin --all
