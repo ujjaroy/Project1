@@ -23,8 +23,7 @@ steps:
     del /S /Q "D:\AzureDevops\AZ_Git\ClonedRepo\*"
     git config --global credential.helper manager-core
     git config --global credential.modalprompt true
-    cd D:\AzureDevops\AZ_Git\ClonedRepo
-    git fetch https://github.com/UjjalKrRoy/AZ_Repo.git
+    git clone https://github.com/UjjalKrRoy/AZ_Repo.git D:\AzureDevops\AZ_Git\ClonedRepo
   displayName: 'Pull code from GitHub'
 
 - task: CmdLine@2
@@ -32,7 +31,7 @@ steps:
     script: |
       cd D:\AzureDevops\AZ_Git\ClonedRepo
       git remote rm origin
-      git remote add azure https://ujjalkrroy:5bs6hchridmk6uevar6jcuqcg2zq2pk6ay3b57cf57ju67cbxfla@dev.azure.com/ujjalkrroy0295/MyProject/_git/My_Repo
+      git remote add azure https://ujjalkrroy:3vpfu2aaxky5swkj6nqdptl7sidftckecvcqgtqnnoz5rntgo73a@dev.azure.com/ujjalkrroy0295/MyProject/_git/My_Repo
 
 - task: CmdLine@2
   inputs:
