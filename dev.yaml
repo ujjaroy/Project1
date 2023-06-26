@@ -1,7 +1,7 @@
 trigger:
   branches:
     include:
-      - main
+      - dev
 
 #variables:
 #  azure: 'https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo'
@@ -37,4 +37,4 @@ steps:
   inputs:
     script: |
       git remote -v
-      git push -u azure --all
+      git push -u azure dev
