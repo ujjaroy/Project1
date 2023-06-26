@@ -24,33 +24,13 @@ steps:
     git config --global credential.helper manager-core
     git config --global credential.modalprompt true
     git clone https://github.com/UjjalKrRoy/AZ_Repo.git D:\AzureDevops\AZ_Git\ClonedRepo
-    git remote rm origin
   displayName: 'Pull code from GitHub'
 
-- task: AzureCLI@2
-  displayName: Check if remote exists
+- task: CmdLine@2
   inputs:
-    scriptType: ps
-    scriptLocation: inlineScript
-    inlineScript: |
-      $remoteExists = git remote | Select-String -Pattern "azure"
-      if ($remoteExists) {
-        Write-Host "Remote 'azure' already exists, skipping remote addition."
-        exit 0 # Exit with success status
-      }
-      else {
-        Write-Host "Remote 'azure' does not exist, proceeding with remote addition."
-        exit 1 # Exit with failure status
-      }
-  name: CheckRemoteExistence
-
-- task: AzureCLI@2
-  displayName: Add remote location
-  inputs:
-    scriptType: ps
-    scriptLocation: inlineScript
-    condition: eq(dependencies.CheckRemoteExistence.outputs['CheckRemoteExistence.result'], 'Failed') # Only execute if remote does not exist
-    inlineScript: |
+    script: |
+      cd D:\AzureDevops\AZ_Git\ClonedRepo
+      git remote rm origin
       git remote add azure https://ujjalkrroy:zi3oeak3vwwuuiorugpxklq3dan7t2tvzcs5yor62oo3e3hojnqq@dev.azure.com/ujjalkrroy0295/MyProject/_git/My_Repo
 
 - task: CmdLine@2
