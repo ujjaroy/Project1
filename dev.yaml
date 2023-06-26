@@ -1,7 +1,7 @@
 trigger:
   branches:
     include:
-      - dev
+      - feature
 
 #variables:
 #  azure: 'https://ujjalkrroy0295@dev.azure.com/ujjalkrroy0295/MyProject/_git/AZ_Repo'
