@@ -31,7 +31,7 @@ steps:
     script: |
       cd D:\AzureDevops\AZ_Git\ClonedRepo
       git remote rm origin
-      git remote add azure https://ujjalkrroy:3vpfu2aaxky5swkj6nqdptl7sidftckecvcqgtqnnoz5rntgo73a@dev.azure.com/ujjalkrroy0295/MyProject/_git/My_Repo
+      git remote add azure https://ujjalkrroy:p6l6q75sq5aa5q2h2wgb3tt6exr7yrlfzbhw27lxzczzxpdwqhlq@dev.azure.com/ujjalkrroy0295/MyProject/_git/My_Repo
 
 - task: CmdLine@2
   inputs:
