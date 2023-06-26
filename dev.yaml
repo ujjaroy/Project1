@@ -24,7 +24,6 @@ steps:
     git config --global credential.helper manager-core
     git config --global credential.modalprompt true
     git clone https://github.com/UjjalKrRoy/AZ_Repo.git D:\AzureDevops\AZ_Git\ClonedRepo
-    git branch
   displayName: 'Pull code from GitHub'
 
 - task: CmdLine@2
@@ -38,4 +37,5 @@ steps:
   inputs:
     script: |
       git remote -v
+      git branch
       git push -u origin --all
