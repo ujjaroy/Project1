@@ -32,8 +32,6 @@ steps:
       cd D:\AzureDevops\AZ_Git\ClonedRepo
       git remote rm origin
       git remote add origin https://ujjalkrroy:7xa3elntcb3hdpgvlsxp6tuullxeqr2lf6de3s43sxvaxrzdke6a@dev.azure.com/ujjalkrroy0295/MyProject/_git/My_Repo
-      git remote -v
-      git push --all
 
 - task: CmdLine@2
   inputs:
