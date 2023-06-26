@@ -25,11 +25,6 @@ steps:
     git clone https://github.com/UjjalKrRoy/AZ_Repo.git D:\AzureDevops\AZ_Git\ClonedRepo
   displayName: 'Pull code from GitHub'
 
-- script: |
-    cd "D:\AzureDevops\AZ_Git\ClonedRepo"
-  displayName: 'CD & Remove Previous Origin'
-
-
 - task: CmdLine@2
   inputs:
     script: |
