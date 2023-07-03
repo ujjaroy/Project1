@@ -1,5 +1,5 @@
 trigger:
-   - qa
+   - dev,qa,prod,stage
 
 ######################################################
 # Variable Section
