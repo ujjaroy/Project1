@@ -9,7 +9,6 @@ variables:
     webAppName: "restdotnetapp"
     env-dev: "azuredevopss"
     LinuxVM: "Self Pool"
-    FileLocation: "D:/AzureDevops/Output/Dev"
         
 ########################################################################
 # Build Stage
@@ -41,5 +40,5 @@ stages:
          - task: PublishBuildArtifacts@1
            displayName: "Publish Artifact"
            inputs:
-             PathtoPublish: '$(FileLocation)'
+             PathtoPublish: '$(build.artifactstagingdirectory)'
            condition: succeededOrFailed()
