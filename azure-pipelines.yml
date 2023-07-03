@@ -9,7 +9,7 @@ variables:
     webAppName: "restdotnetapp"
     env-dev: "azuredevopss"
     LinuxVM: "Self Pool"
-    FileLocation: "D:\AzureDevops\Output\Dev"
+    FileLocation: "D:/AzureDevops/Output/Dev"
         
 ########################################################################
 # Build Stage
