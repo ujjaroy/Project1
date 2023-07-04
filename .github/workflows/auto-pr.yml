@@ -3,7 +3,7 @@ name: Auto Create, Approve, and Merge PR
 on:
   push:
     branches:
-      - dev
+      - feature
 
 jobs:
   auto_create_approve_merge:
