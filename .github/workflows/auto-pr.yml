@@ -1,36 +1,44 @@
----
-name: Auto-PR
+name: Auto Create, Approve, and Merge PR
 
 on:
   push:
     branches:
-      - feature
-jobs:
-  updateAuthor:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checking out code
-        uses: actions/checkout@v2
-      - name: extract git commit data
-        uses: rlespinasse/git-commit-data-action@v1.x
-      - name: Update author information
-        run: echo ${{ env.GIT_COMMIT_AUTHOR_NAME }} > AUTHOR
-      - name: Raise PR
-        uses: peter-evans/create-pull-request@v3
-        with:
-          branch: dev
-          base: feature
-          title: demo for auto pr
-          body: This is to show automatic PR creation
-          token: ${{ secrets.GITHUB_TOKEN }}
-          delete-branch: true
-      - name: Approve Pull Request
-        uses: juliangruber/approve-pull-request-action@v1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Merge Pull request
-        uses: juliangruber/merge-pull-request-action@v1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          method: squash
+      - dev
 
+jobs:
+  auto_create_approve_merge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Create, Approve, and Merge PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH_NAME=$(echo "${GITHUB_REF}" | awk -F/ '{print $3}')
+          PR_TITLE="Automated PR for ${BRANCH_NAME}"
+          PR_BODY="This is an automated PR created and merged by a GitHub Actions workflow."
+          API_URL="https://api.github.com/repos/${{ github.repository }}/pulls"
+          AUTH_HEADER="Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"
+
+          # Create the pull request
+          PR_RESPONSE=$(curl -sSL -X POST -H "${AUTH_HEADER}" -d '{"title": "'"${PR_TITLE}"'", "head": "'"${BRANCH_NAME}"'", "base": "main", "body": "'"${PR_BODY}"'"}' "${API_URL}")
+          PR_NUMBER=$(echo "${PR_RESPONSE}" | jq -r '.number')
+
+          # Approve the pull request
+          APPROVAL_RESPONSE=$(curl -sSL -X POST -H "${AUTH_HEADER}" -d '{"event": "APPROVE"}' "${API_URL}/${PR_NUMBER}/reviews")
+          APPROVAL_ID=$(echo "${APPROVAL_RESPONSE}" | jq -r '.id')
+
+          # Merge the pull request
+          MERGE_RESPONSE=$(curl -sSL -X PUT -H "${AUTH_HEADER}" "${API_URL}/${PR_NUMBER}/merge")
+
+          # Check if the merge was successful
+          MERGE_STATUS=$(echo "${MERGE_RESPONSE}" | jq -r '.merged')
+
+          if [[ "${MERGE_STATUS}" == "true" ]]; then
+            echo "Pull request ${PR_NUMBER} was automatically created, approved, and merged."
+          else
+            echo "Failed to automatically create, approve, and merge pull request ${PR_NUMBER}."
+          fi
