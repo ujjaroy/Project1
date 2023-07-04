@@ -25,15 +25,14 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           delete-branch: true
       - name: Approve Pull Request
-          APPROVAL_RESPONSE=$(curl -sSL -X POST -H "${AUTH_HEADER}" -d '{"event": "APPROVE"}' "${API_URL}/${PR_NUMBER}/reviews")
-          APPROVAL_ID=$(echo "${APPROVAL_RESPONSE}" | jq -r '.id')
+        uses: juliangruber/approve-pull-request-action@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ steps.demo-1.outputs.pull-request-number }}
       - name: Merge Pull request
-          MERGE_RESPONSE=$(curl -sSL -X PUT -H "${AUTH_HEADER}" "${API_URL}/${PR_NUMBER}/merge")
-          # Check if the merge was successful
-          MERGE_STATUS=$(echo "${MERGE_RESPONSE}" | jq -r '.merged')
+        uses: juliangruber/merge-pull-request-action@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ steps.demo-1.outputs.pull-request-number }}
+          method: squash
 
-          if [[ "${MERGE_STATUS}" == "true" ]]; then
-            echo "Pull request ${PR_NUMBER} was automatically created, approved, and merged."
-          else
-            echo "Failed to automatically create, approve, and merge pull request ${PR_NUMBER}."
-          fi
