@@ -23,9 +23,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Merge Pull Request
-        uses: pascalgn/automerge-action@v0.10.0
+        uses: octokit/request-action@v2.x
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          pull_number: ${{ steps.create_pr.outputs.pull-request-number }}
-          method: merge
-          merge_method: merge
+          route: PUT /repos/${{ github.repository }}/pulls/${{ steps.create_pr.outputs.pull-request-number }}/merge
+          token: ${{ secrets.GITHUB_TOKEN }}
