@@ -23,7 +23,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Merge Pull Request
-        uses: pull-request-action/merge@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          pull_request_number: ${{ steps.create_pr.outputs.pull-request-number }}
+        run: |
+          curl -XPUT -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          "https://api.github.com/repos/${{ github.repository }}/pulls/${{ steps.create_pr.outputs.pull-request-number }}/merge"
