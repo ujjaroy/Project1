@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - feature
+
 jobs:
   updateAuthor:
     runs-on: ubuntu-latest
@@ -18,8 +19,8 @@ jobs:
       - name: Raise PR
         uses: peter-evans/create-pull-request@v3
         with:
-          branch: feature
-          base: dev
+          branch: dev
+          base: feature
           title: demo for auto pr
           body: This is to show automatic PR creation
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -27,11 +28,11 @@ jobs:
         uses: juliangruber/approve-pull-request-action@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          number: ${{ steps.raise-pr.outputs.pull-request-number }}
+          number: ${{ github.event.pull_request.number }}
       - name: Merge Pull request
         uses: juliangruber/merge-pull-request-action@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          number: ${{ steps.raise-pr.outputs.pull-request-number }}
+          number: ${{ github.event.pull_request.number }}
           method: squash
 
