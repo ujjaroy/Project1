@@ -1,28 +1,21 @@
----
 name: Auto Merge
+
 on:
   push:
     branches:
       - feature
+
 jobs:
   merge:
     runs-on: ubuntu-latest
+
     steps:
       - name: Check out code
         uses: actions/checkout@v2
-      - name: Create Pull Request
-        id: create_pr
-        uses: peter-evans/create-pull-request@v3
-        with:
-          title: Merge feature into dev
-          head: feature
-          base: dev
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Merge Pull Request
-        uses: pascalgn/automerge-action@v0.10.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          pull_number: ${{ steps.create_pr.outputs.pull-request-number }}
-          method: merge
-          merge_method: merge
+
+      - name: Merge feature into dev
+        run: git merge ${{ github.ref }} --no-ff --no-edit
+
+      - name: Push changes
+        run: git push origin HEAD
 
