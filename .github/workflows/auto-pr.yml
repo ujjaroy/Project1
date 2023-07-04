@@ -1,5 +1,5 @@
 ---
-name: Auto PR
+name: Auto-PR
 
 on:
   push:
