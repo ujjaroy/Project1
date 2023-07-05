@@ -9,9 +9,9 @@ jobs:
   updateAuthor:
     runs-on: ubuntu-latest
     steps:
-      - name: checking out code
+      - name: Checking out code
         uses: actions/checkout@v2
-      - name: extract git commit data
+      - name: Extract git commit data
         uses: rlespinasse/git-commit-data-action@v1.x
       - name: Update author information
         run: echo ${{ env.GIT_COMMIT_AUTHOR_NAME }} > AUTHOR
@@ -21,18 +21,36 @@ jobs:
         with:
           branch: feature
           base: dev
-          title: demo for auto pr
+          title: Demo for auto PR
           body: This is to show automatic PR creation
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Approve Pull Request
-        uses: juliangruber/approve-pull-request-action@v1
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          pull_number: ${{ steps.create_pr.outputs.pull-request-number }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          message: "Auto-approved!"
+          number: ${{ steps.create_pr.outputs.pull-request-number }}
       - name: Merge Pull Request
-        uses: juliangruber/merge-pull-request-action@v1
+        uses: actions/github-script@v5
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          pull_number: ${{ steps.create_pr.outputs.pull-request-number }}
-          merge_method: merge
+          script: |
+            const pullRequestNumber = ${steps.create_pr.outputs.pull-request-number};
+            const octokit = context.octokit;
+            const { data: pullRequest } = await octokit.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pullRequestNumber
+            });
+            if (pullRequest.mergeable) {
+              await octokit.pulls.merge({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: pullRequestNumber,
+                merge_method: 'merge'
+              });
+              console.log('Pull request merged successfully.');
+            } else {
+              console.log('Pull request cannot be merged automatically.');
+            }
 
