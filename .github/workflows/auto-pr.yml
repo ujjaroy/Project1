@@ -31,26 +31,10 @@ jobs:
           message: "Auto-approved!"
           pull-request-number: ${{ steps.create_pr.outputs.pull-request-number }}
       - name: Merge Pull Request
-        uses: actions/github-script@v5
+        uses: repo-sync/github-sync@v3
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const pullRequestNumber = ${steps.create_pr.outputs.pull-request-number};
-            const octokit = context.octokit;
-            const { data: pullRequest } = await octokit.pulls.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: pullRequestNumber
-            });
-            if (pullRequest.mergeable) {
-              await octokit.pulls.merge({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number: pullRequestNumber,
-                merge_method: 'merge'
-              });
-              console.log('Pull request merged successfully.');
-            } else {
-              console.log('Pull request cannot be merged automatically.');
-            }
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_branch: feature
+          target_branch: dev
+          method: merge
 
