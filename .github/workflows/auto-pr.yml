@@ -1,30 +1,36 @@
-name: Auto Merge
+name: Automerge
 
 on:
   push:
     branches:
       - feature
 
+env:
+  # replace "github_username" with your GitHub username
+  # replace "github.com/username/repo.git" with your GitHub repo path
+  # do NOT replace ${{secrets.GITHUB_TOKEN}}, GitHub will take care of it
+  MY_REPO: https://UjjalKrRoy:${{secrets.GITHUB_TOKEN}}@github.com/UjjalKrRoy/AzureProject.git
+
+  # replace "long-lived_branch_name" with your branch name
+  MY_BRANCH: dev
+
+  # replace it with the path to master repo
+  MASTER_REPO: https://github.com/username/master_repo.git
+
+  # replace "master" with your master branch name
+  MASTER_BRANCH: feature
+
 jobs:
   merge:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-
-      - name: Create Pull Request
-        id: create_pr
-        uses: peter-evans/create-pull-request@v3
-        with:
-          title: Merge feature into dev
-          head: feature
-          base: dev
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Merge Pull Request
-        uses: pull-request-merge-action@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          pull_request_number: ${{ steps.create_pr.outputs.pull-request-number }}
-
+    - name: Merge with master
+      run: |
+        git clone ${{env.MY_REPO}} -b ${{env.MY_BRANCH}} tmp
+        cd tmp
+        git config user.name "Ujjal"
+        git config user.email "ujjalroy.indian@gmail.com"
+        git config pull.rebase false
+        git pull ${{env.MASTER_REPO}} ${{env.MASTER_BRANCH}}
+        git push
