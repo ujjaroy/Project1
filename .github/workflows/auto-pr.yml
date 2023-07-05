@@ -27,8 +27,8 @@ jobs:
     steps:
     - name: Merge with master
       run: |
-        git clone ${{env.MY_REPO}} -b ${{env.MY_BRANCH}} /tmp
-        cd /tmp
+        git clone ${{env.MY_REPO}} -b ${{env.MY_BRANCH}} /usr/bin/tmp
+        cd /usr/bin/tmp
         git config user.name "Ujjal"
         git config user.email "ujjalroy.indian@gmail.com"
         git config pull.rebase false
