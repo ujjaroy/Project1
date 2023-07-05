@@ -31,10 +31,9 @@ jobs:
           message: "Auto-approved!"
           pull-request-number: ${{ steps.create_pr.outputs.pull-request-number }}
       - name: Merge Pull Request
-        uses: repo-sync/github-sync@v3
+        uses: pull-request-merge-action@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          source_branch: feature
-          target_branch: dev
-          method: merge
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          pull-request-number: ${{ steps.create_pr.outputs.pull-request-number }}
+          merge-method: squash
 
